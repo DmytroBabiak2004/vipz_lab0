@@ -213,6 +213,39 @@ void max_mark(stud* first, stud** mins)
 	}
 }
 
+int main()
+{
+	stud* first_stud = NULL;
+	stud* curr_stud = NULL;
+	FILE* file = fopen("db.txt", "r");
+	stud** mins = (stud**)calloc(MINS, sizeof(stud*));
+	while (!feof(file))
+	{
+		curr_stud = add_student(file);
+		insert_node(&first_stud, curr_stud);
+	}
+	fclose(file);
+	print_data(first_stud);
+				/*printf("\n\nTop 2 best students:\n");
+				printf("Surname Name Date of birth\tExamination marks\n");
+				printf("------------------------------------------------------------------\n");
+				max_mark(first_stud, mins);
+				for (int i = 0; i < MINS; i++)
+				{
+					printf("%-16s%-12s%02i.%02i.%04i\t\t%-3i %-3i %-3i %-3i %-3i\n",
+						mins[i]->surname, mins[i]->name,
+						mins[i]->birth_date.day, mins[i]->birth_date.month, mins[i]->birth_date.year,
+						mins[i]->marks[0], mins[i]->marks[1], mins[i]->marks[2],
+						mins[i]->marks[3], mins[i]->marks[4]);
+				}
+				printf("-----------------------------------------------------------------\n");
+				first_stud = sort(first_stud, avg_mark_all(first_stud));*/
+	sort(first_stud, avg_mark_all(first_stud));
+	print_data(first_stud);
+	free(mins);
+	return 0;
+}
+
 //int main()
 //{
 //	stud* first_stud = NULL;
@@ -244,34 +277,3 @@ void max_mark(stud* first, stud** mins)
 //	free(mins);
 //	return 0;
 //}
-int main()
-{
-	stud* first_stud = NULL;
-	stud* curr_stud = NULL;
-	FILE* file = fopen("db.txt", "r");
-	stud** mins = (stud**)calloc(MINS, sizeof(stud*));
-	while (!feof(file))
-	{
-		curr_stud = add_student(file);
-		insert_node(&first_stud, curr_stud);
-	}
-	fclose(file);
-	print_data(first_stud);
-	/*printf("\n\nTop 2 best students:\n");
-	printf("Surname Name Date of birth\tExamination marks\n");
-	printf("------------------------------------------------------------------\n");
-	max_mark(first_stud, mins);
-	for (int i = 0; i < MINS; i++)
-	{
-		printf("%-16s%-12s%02i.%02i.%04i\t\t%-3i %-3i %-3i %-3i %-3i\n",
-			mins[i]->surname, mins[i]->name,
-			mins[i]->birth_date.day, mins[i]->birth_date.month, mins[i]->birth_date.year,
-			mins[i]->marks[0], mins[i]->marks[1], mins[i]->marks[2],
-			mins[i]->marks[3], mins[i]->marks[4]);
-	}
-	printf("-----------------------------------------------------------------\n");
-	first_stud = sort(first_stud, avg_mark_all(first_stud));*/
-	print_data(first_stud);
-	free(mins);
-	return 0;
-}
