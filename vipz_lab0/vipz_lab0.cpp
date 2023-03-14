@@ -137,7 +137,6 @@ stud* sort(stud* first, double min_mark)
 		}
 		first = first->next;
 	}
-	temp = first_t;
 	stud* del_temp;
 	while (first) {
 		del_temp = first;
