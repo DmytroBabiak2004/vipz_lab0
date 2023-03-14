@@ -153,7 +153,7 @@ stud* sort(stud* first, double min_mark)
 		free(temp);
 		temp = del_temp->next;
 	}
-		return temp;
+		return first_t;
 }
 
 //void best_2_student(stud* first) {
