@@ -239,7 +239,7 @@ int main()
 				}
 				printf("-----------------------------------------------------------------\n");
 				first_stud = sort(first_stud, avg_mark_all(first_stud));*/
-	sort(first_stud, avg_mark_all(first_stud));
+	first_stud = sort(first_stud, avg_mark_all(first_stud));
 	print_data(first_stud);
 	free(mins);
 	return 0;
